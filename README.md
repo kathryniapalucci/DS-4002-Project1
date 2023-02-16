@@ -15,7 +15,7 @@
 | is_retweet | Character | States whether the post is a retweet; True if it is a retweet, False if it is not a retweet |
 | favorite_count | Integer | Number of likes that the tweet received |
 ## You can download our dataset at [(https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets)]. 
-## Our data was used to...
+## Our data was used to explore our hypothesis: *Tweets from presidential candidates in the 2016 election with a negative sentiment will have an average favorite count that is at least 20% higher than tweets with a positive or neutral sentiment*
 
 # FIGURES
 ## Here are our figures.
