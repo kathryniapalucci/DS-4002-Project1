@@ -15,4 +15,5 @@
 ## Here are our figures.
 
 # REFERENCES
-## We would like to thank Avril Lavigne for giving us the courage and inspiration to explore this topic.
+## Acknowledgements 
+#### We would like to thank Avril Lavigne for giving us the courage and inspiration to explore this topic.
