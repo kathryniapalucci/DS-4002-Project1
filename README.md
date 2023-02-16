@@ -8,6 +8,12 @@
 ### You can use our code by...
 
 # DATA
+| Variable | Type | Description |
+| --- | --- | --- |
+| Handle | Character | Username of the person who posted the tweet |
+| Text | Character | Content of the tweet |
+| is_retweet | Character | States whether the post is a retweet; True if it is a retweet, False if it is not a retweet |
+| favorite_count | Integer | Number of likes that the tweet received |
 ## Download our dataset here. 
 ## Our data was used to...
 
