@@ -14,7 +14,7 @@
 | text | Character | Content of the tweet |
 | is_retweet | Character | States whether the post is a retweet; True if it is a retweet, False if it is not a retweet |
 | favorite_count | Integer | Number of likes that the tweet received |
-## You can download our dataset at https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets . 
+## You can download our dataset at [(https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets)]. 
 ## Our data was used to...
 
 # FIGURES
