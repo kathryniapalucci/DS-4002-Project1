@@ -1,0 +1,129 @@
+---
+title: "p1mi3"
+output: html_document
+date: "2023-02-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(sentimentr)
+library(readr)
+library(tidyverse)
+library(tm)
+tweets <- read_csv("~/Documents/DS-4002/proj1/tweets.csv")
+```
+
+##Clean data
+
+Remove retweets:
+```{r}
+tweets <- tweets %>% 
+  filter(is_retweet==FALSE) %>%
+  select(handle, text, is_retweet, favorite_count)
+```
+
+Remove any links:
+```{r}
+tweets$text <- gsub("https://.*","",tweets$text)
+```
+
+Remove stop words:
+```{r}
+tweets$text <- removeWords(tweets$text,stopwords('en'))
+```
+
+
+##Calculate sentiment
+```{r}
+tweets$sentences <- get_sentences(tweets$text)
+tweets$sentiments <- sentiment_by(tweets$sentences)
+
+tweets$sentiment <- ifelse(tweets$sentiments$ave_sentiment > 0.05, "positive/neutral",
+                     ifelse(tweets$sentiments$ave_sentiment > -0.05,"positive/neutral","negative"))
+
+
+tweets$sentiment <- factor(tweets$sentiment)
+```
+
+##Prep for modeling
+
+Outliers:
+```{r}
+box <- ggplot(tweets, aes(y=favorite_count)) + geom_boxplot()
+box
+
+box.built <- ggplot_build(box)
+
+upper <- box.built$data[[1]]$ymax
+
+# create a new data frame removing outliers
+tweets_nooutliers <- tweets %>% filter(favorite_count < upper)
+
+ggplot(tweets_nooutliers, aes(y=favorite_count)) + 
+  geom_boxplot(aes(fill=sentiment)) +
+  ylab("Favorite Count")
+
+ggplot(tweets_nooutliers, aes(x=sentiments$ave_sentiment, y=favorite_count)) +
+  geom_point() + geom_smooth(method="lm")
+```
+
+Normalize favorite count variable:
+```{r}
+normalize <- function(x){
+ (x - min(x,na.rm=TRUE)) / (max(x,na.rm=TRUE) - min(x,na.rm=TRUE))
+}
+
+tweets_nooutliers$favorite_count_norm <- normalize(tweets_nooutliers$favorite_count)
+```
+
+Change base case:
+```{r}
+contrasts(tweets_nooutliers$sentiment)<-matrix(c(1,0, 0,1),nrow=2)
+colnames(contrasts(tweets_nooutliers$sentiment)) <-matrix(c("_negative"),ncol=1)
+contrasts(tweets_nooutliers$sentiment)
+```
+
+Preliminary data exploration:
+```{r}
+# See distribution of which candidate had more of each kind of tweet
+ggplot(tweets,aes(handle)) + geom_bar(position='fill',aes(fill=sentiment))
+
+# Initial averages
+fav_positiveneutral <- mean(tweets$favorite_count[tweets$sentiment=="positive/neutral"])
+fav_negative <- mean(tweets$favorite_count[tweets$sentiment=="negative"])
+```
+
+## Modeling
+
+GLM with Sentiment Score:
+```{r}
+sentiment_num_glm <- glm(favorite_count_norm ~ sentiments$ave_sentiment, data = tweets_nooutliers)
+summary(sentiment_num_glm)
+```
+
+GLM with category:
+```{r}
+
+# this needs work because the coefficients are kinda massive and i don't know how to interpret them :P
+sentiment_category_glm <- glm(favorite_count_norm ~ sentiment, data = tweets_nooutliers)
+summary(sentiment_category_glm)
+sentiment_category_glm$coefficients[1]
+
+exp(coef(sentiment_category_glm))
+```
+
+Plot normalized favorites against sentiment score with modeled line
+```{r}
+ggplot(tweets_nooutliers, aes(x=sentiments$ave_sentiment, y=favorite_count_norm)) +
+  geom_point() + 
+  geom_abline(colour="red",
+              slope = coef(sentiment_num_glm)[["sentiments$ave_sentiment"]], 
+              intercept = coef(sentiment_num_glm)[["(Intercept)"]]) +
+  ylab("Normalized Favorite Count") +
+  xlab("Sentiment Score")
+```
+
+
