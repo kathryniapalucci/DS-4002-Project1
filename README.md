@@ -5,7 +5,7 @@
 
 ## SRC
 #### You can download our code here. 
-#### You can use our code by...
+#### To use our code, download the file above and run it in RStudio. 
 
 ## DATA
 | Variable | Type | Description |
