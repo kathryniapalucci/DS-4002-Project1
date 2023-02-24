@@ -5,7 +5,7 @@ In this github repository you will find our README.md file, LICENSE.md file, SRC
 
 ## SRC
 #### You can download our code here. 
-#### To use our code, download the file above and run it in RStudio. 
+#### To use our code, download the file in the SRC folder and run it in RStudio. 
 
 ## DATA
 | Variable | Type | Description |
