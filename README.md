@@ -18,7 +18,10 @@
 ### Our data was used to explore our hypothesis: *Tweets from presidential candidates in the 2016 election with a negative sentiment will have an average favorite count that is at least 20% higher than tweets with a positive or neutral sentiment*
 
 ## FIGURES
-### Here are our figures.
+| Figure | Summary |
+| --- | --- |
+| Favorite Count Boxplot | Both boxplots show a weak relationship between favorite count and tweet sentiment |
+| Sentiment Score vs. Favorite Count | Graph shows weak relationship between sentiment and favorite count |
 
 ## REFERENCES
 ### Acknowledgements 
