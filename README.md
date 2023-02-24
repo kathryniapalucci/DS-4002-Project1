@@ -16,8 +16,8 @@ To use our code, simply download the file above and run it in RStudio, ensuring 
 | text | Character | Content of the tweet |
 | is_retweet | Character | States whether the post is a retweet; True if it is a retweet, False if it is not a retweet |
 | favorite_count | Integer | Number of likes that the tweet received |
-### You can download our dataset at [(https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets)]. 
-### Our data was used to explore our hypothesis: *Tweets from presidential candidates in the 2016 election with a negative sentiment will have an average favorite count that is at least 20% higher than tweets with a positive or neutral sentiment*
+You can download the dataset at [(https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets)]. 
+Our data was used to explore our hypothesis: *Tweets from presidential candidates in the 2016 election with a negative sentiment will have an average favorite count that is at least 20% higher than tweets with a positive or neutral sentiment*
 
 ## FIGURES
 | Figure | Summary |
@@ -28,6 +28,6 @@ To use our code, simply download the file above and run it in RStudio, ensuring 
 ## REFERENCES
 [1]   B. Hamner, Hillary Clinton and Donald Trump Tweets, version. 1, Kaggle, 2017. [Dataset]. Available: https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets. [Accessed: Feb. 14, 2023].
 ### Acknowledgements 
-##### We would like to thank Avril Lavigne for giving us the courage and inspiration to explore this topic.
-##### Our MI1 can be found at [(https://docs.google.com/document/d/1aVDO7VggXbeZD6Cnr6ZicUILEYJg2Dvg1vbDfX1lMCg/edit?usp=sharing)].
-##### Our MI2 can be found at [(https://docs.google.com/document/d/1gwaZhRAB0hcL1BAMrl5kDhJ49r5QBPlyxC4swh_DRAc/edit?usp=sharing)].
+We would like to thank Avril Lavigne for giving us the courage and inspiration to explore this topic.
+Our MI1 can be found at [(https://docs.google.com/document/d/1aVDO7VggXbeZD6Cnr6ZicUILEYJg2Dvg1vbDfX1lMCg/edit?usp=sharing)].
+Our MI2 can be found at [(https://docs.google.com/document/d/1gwaZhRAB0hcL1BAMrl5kDhJ49r5QBPlyxC4swh_DRAc/edit?usp=sharing)].
