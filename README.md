@@ -26,3 +26,5 @@
 ## REFERENCES
 ### Acknowledgements 
 ##### We would like to thank Avril Lavigne for giving us the courage and inspiration to explore this topic.
+##### Our MI1 can be found at [(https://docs.google.com/document/d/1aVDO7VggXbeZD6Cnr6ZicUILEYJg2Dvg1vbDfX1lMCg/edit?usp=sharing)].
+##### Our MI2 can be found at [(https://docs.google.com/document/d/1gwaZhRAB0hcL1BAMrl5kDhJ49r5QBPlyxC4swh_DRAc/edit?usp=sharing)].
