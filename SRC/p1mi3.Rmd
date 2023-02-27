@@ -68,6 +68,9 @@ ggplot(tweets_nooutliers, aes(y=favorite_count)) +
 
 ggplot(tweets_nooutliers, aes(x=sentiments$ave_sentiment, y=favorite_count)) +
   geom_point() + geom_smooth(method="lm")
+
+ggplot(tweets_nooutliers, aes(x=favorite_count,color=sentiment)) + 
+  geom_density()
 ```
 
 Normalize favorite count variable:
@@ -102,12 +105,12 @@ GLM with Sentiment Score:
 ```{r}
 sentiment_num_glm <- glm(favorite_count_norm ~ sentiments$ave_sentiment, data = tweets_nooutliers)
 summary(sentiment_num_glm)
+
+exp(coef(sentiment_num_glm))
 ```
 
 GLM with category:
 ```{r}
-
-# this needs work because the coefficients are kinda massive and i don't know how to interpret them :P
 sentiment_category_glm <- glm(favorite_count_norm ~ sentiment, data = tweets_nooutliers)
 summary(sentiment_category_glm)
 sentiment_category_glm$coefficients[1]
